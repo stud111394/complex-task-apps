@@ -1,0 +1,36 @@
+﻿@using CarShop.Models.ViewModels;
+
+@model HomeViewModel 
+
+@{
+    ViewData["Title"] = "Главная";
+}
+
+
+<div class="text-center d-flex justify-content-center" >
+    <h1>
+        Новинки
+    </h1>
+</div>
+
+
+<div class="row" style="margin-top:40px">
+    @foreach (var item in Model.CarZaps)
+    {
+    <div class="col-lg-3 col-md-4 col-sm-12">
+        <div class="card" style="width: auto">
+            <img class="card-img-top" src="@item.ImgLink" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.Nazvanie</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@item.Cena Р.</li>
+            </ul>
+            <div class="card-body">
+                <a href="/Zap/Index?id=@item.IdCarZap" class="card-link">Подробнее</a><br />
+                <a href="/Buy/Index?id=@item.IdCarZap" class="card-link">Купить</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
